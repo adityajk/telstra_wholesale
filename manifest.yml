@@ -1,0 +1,4 @@
+---
+applications:
+- name: telstra-assignment
+  instances: 1
