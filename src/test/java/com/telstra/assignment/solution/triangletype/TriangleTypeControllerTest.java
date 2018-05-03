@@ -43,7 +43,7 @@ public class TriangleTypeControllerTest {
 
     @Test
     public void getFibonacci_notFound() throws Exception {
-        given(triangleTypeService.getTriangleType(anyInt(), anyInt(), anyInt())).willThrow(new WrongTriangleTypeException());
+        given(triangleTypeService.getTriangleType(anyInt(), anyInt(), anyInt())).willThrow(new WrongTriangleTypeException("Sides of triangle cannot be negative !!"));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/TriangleType?a=-1&b=10&c=-61"))
                 .andExpect(status().isNotFound());

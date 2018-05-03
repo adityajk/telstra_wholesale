@@ -29,7 +29,8 @@ public class ReverseWordsController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    private void reverseWordNotFoundHandler(WordNotFoundException ex) {
-        // A proper messgae can be returned.
+    private String reverseWordNotFoundHandler(WordNotFoundException ex) {
+        String result = ex.getErrorMessage();
+        return result;
     }
 }

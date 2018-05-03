@@ -32,7 +32,8 @@ public class MakeOneArrayController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    private void oneArrayNotFoundHandler(OneArrayNotFoundException ex) {
-        // A proper exception message can be returned.
+    private String oneArrayNotFoundHandler(OneArrayNotFoundException ex) {
+        String result = ex.getErrorMessage();
+        return result;
     }
 }

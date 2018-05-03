@@ -29,7 +29,8 @@ public class TriangleTypeController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    private void reverseWordNotFoundHandler(WrongTriangleTypeException ex) {
-        // A proper exception message can be returned.
+    private String reverseWordNotFoundHandler(WrongTriangleTypeException ex) {
+        String result = ex.getErrorMessage();
+        return result;
     }
 }

@@ -16,7 +16,7 @@ public class TriangleTypeServiceImpl implements TriangleTypeService {
     @Override
     public String getTriangleType(int a, int b, int c) {
         if(a < 0 || b < 0 || c < 0) {
-            throw new WrongTriangleTypeException();
+            throw new WrongTriangleTypeException("Sides of triangle cannot be less than zero !!");
         }
         if (a <= 0 || b <= 0 || c <= 0) return INVALID.toString();
         if (a == b && b == c) return EQUILATERAL.toString();

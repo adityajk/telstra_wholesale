@@ -71,7 +71,7 @@ public class MakeOneArrayControllerTest {
     @Test
     public void getOneArray_notFound() throws Exception {
         final String arrayDTOJson = jsonTester.write(new ArrayDto()).getJson();
-        given(makeOneArrayService.getOneArray(any())).willThrow(new OneArrayNotFoundException());
+        given(makeOneArrayService.getOneArray(any())).willThrow(new OneArrayNotFoundException("Array cannot be empty !!"));
 
         mockMvc.perform(MockMvcRequestBuilders.post(ARRAY_URL).
                 content(arrayDTOJson).contentType(APPLICATION_JSON));

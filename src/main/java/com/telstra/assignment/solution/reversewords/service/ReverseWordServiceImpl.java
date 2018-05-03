@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class ReverseWordServiceImpl implements ReverseWordService {
     @Override
     public String reverseWords(String sentence) {
-        if(null == sentence) {
-            throw new WordNotFoundException();
+        if(null == sentence || sentence.isEmpty()) {
+            throw new WordNotFoundException("Please provide the sentence to be reversed !!");
         }
         return Pattern.compile("%20+").splitAsStream(sentence)
                 .map(word->new StringBuilder(word).reverse())

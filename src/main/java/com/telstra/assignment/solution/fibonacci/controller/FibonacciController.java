@@ -23,13 +23,17 @@ public class FibonacciController {
     }
 
     @GetMapping("/api/Fibonacci")
-    private ResponseEntity<Long> getFibonacciNumber(@RequestParam("n") int n) {
-        return ResponseEntity.ok(fibonacciService.getFibonacciNumber(n));
+    private ResponseEntity<Long> getFibonacciNumber(@RequestParam(value="n", defaultValue = "0.1") double n) {
+        if(n == 0.1 || (n-(int)n)!=0) {
+            throw new FibonacciNumberNotFoundException("Number cannot be empty or in decimal !!");
+        }
+        return ResponseEntity.ok(fibonacciService.getFibonacciNumber((int) n));
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    private void fibonacciNumberNotFoundHandler(FibonacciNumberNotFoundException ex) {
-        // If required a proper messgae can be returned.
+    private String fibonacciNumberNotFoundHandler(FibonacciNumberNotFoundException ex) {
+        String result = ex.getErrorMessage();
+        return result;
     }
 }

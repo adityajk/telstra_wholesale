@@ -18,7 +18,7 @@ public class MakeOneArrayServiceImpl implements MakeOneArrayService {
 
     public OneArray getOneArray(ArrayDto arrayDto) {
         if(null == arrayDto.getArray1() || null == arrayDto.getArray2() || null == arrayDto.getArray3()) {
-            throw new OneArrayNotFoundException();
+            throw new OneArrayNotFoundException("Array cannot be empty !!");
         }
 
         List<Integer> newList = Stream.of(arrayDto.getArray1(), arrayDto.getArray2(), arrayDto.getArray3())

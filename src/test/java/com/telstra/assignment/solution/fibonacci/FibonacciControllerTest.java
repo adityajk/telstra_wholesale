@@ -44,7 +44,7 @@ public class FibonacciControllerTest {
 
     @Test
     public void getFibonacci_notFound() throws Exception {
-        given(fibonacciService.getFibonacciNumber(anyInt())).willThrow(new FibonacciNumberNotFoundException());
+        given(fibonacciService.getFibonacciNumber(anyInt())).willThrow(new FibonacciNumberNotFoundException("Number cannot be negative !!"));
 
         mockMvc.perform(MockMvcRequestBuilders.get(FIBONACCI_URL).param("n", "10"))
                 .andExpect(status().isNotFound());

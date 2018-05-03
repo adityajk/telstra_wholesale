@@ -46,7 +46,7 @@ public class ReverseWordsControllerTest {
 
     @Test
     public void getFibonacci_notFound() throws Exception {
-        given(reverseWordService.reverseWords(anyString())).willThrow(new WordNotFoundException());
+        given(reverseWordService.reverseWords(anyString())).willThrow(new WordNotFoundException("Word is empty !!"));
 
         mockMvc.perform(MockMvcRequestBuilders.get(WORD_URL).param(PARAM_VALUE, MAIN_SENTENCE))
                 .andExpect(status().isNotFound());
